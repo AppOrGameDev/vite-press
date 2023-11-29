@@ -34,11 +34,11 @@ jobs:
       - name: Update the gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: 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
+          github_token: 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
           publish_dir: docs/.vitepress/dist
 
   gitee-branch-sync:
-    needs: [ github-branch-update ]
+    needs: [github-branch-update]
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -53,7 +53,7 @@ jobs:
           # destination-branch: gh-pages
 
   gitee-pages-deploy:
-    needs: [ gitee-branch-sync ]
+    needs: [gitee-branch-sync]
     runs-on: ubuntu-latest
     steps:
       - name: Build Gitee Pages
@@ -65,7 +65,7 @@ jobs:
           branch: gh-pages
 
   search-algolia:
-    needs: [ github-branch-update ]
+    needs: [github-branch-update]
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
