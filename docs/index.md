@@ -2,10 +2,10 @@
 layout: home
 
 title: 首页
-titleTemplate: AppOrGameDev笔记本
+titleTemplate: AppOrGameDev开发笔记
 
 hero:
-  name: 笔记本
+  name: 开发笔记
   text: AppOrGameDev
   tagline: 须知少年凌云志,曾许人间第一流.
   image:
