@@ -6,7 +6,7 @@ import { computed, onMounted, ref, watchEffect } from 'vue'
 const { title, isDark, site } = useData()
 
 
-const theme = computed(() => `https://peiyanlu.github.io${ site.value.base }giscus/noborder_${ isDark.value ? 'dark' : 'light' }.css`)
+const theme = computed(() => `https://AppOrGameDev.github.io${ site.value.base }giscus/noborder_${ isDark.value ? 'dark' : 'light' }.css`)
 const isGitee = ref(false)
 
 onMounted(() => {
@@ -30,7 +30,7 @@ onMounted(() => {
       data-loading="lazy"
       data-mapping="title"
       data-reactions-enabled="1"
-      data-repo="peiyanlu/vite-press"
+      data-repo="AppOrGameDev/vite-press"
       data-repo-id="R_kgDOIahnTQ"
       data-strict="1"
       src="https://giscus.app/client.js"

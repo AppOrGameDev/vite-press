@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import md5 from 'md5'
-import { inBrowser, useData } from 'vitepress'
-import { onMounted, ref } from 'vue'
+import md5 from 'md5';
+import { inBrowser, useData } from 'vitepress';
+import { onMounted, ref } from 'vue';
 
 
 const { page, title } = useData()
@@ -19,8 +19,8 @@ const handleLoad = () => {
       clientID: 'd043e806d74ff3ecfa64',
       clientSecret: '66f2fa78f067e27de59b28156a4be87c79e1eb94',
       repo: 'vite-press',
-      owner: 'peiyanlu',
-      admin: [ 'peiyanlu' ],
+      owner: 'AppOrGameDev',
+      admin: [ 'AppOrGameDev' ],
       id: md5(page.value.relativePath),
       language: 'zh-CN',
       distractionFreeMode: false,

@@ -1,9 +1,6 @@
 {
   "index_name": "vite-press",
-  "start_urls": [
-    "https://peiyanlu.github.io/vite-press/",
-    "https://peiyanlu.gitee.io/vite-press/"
-  ],
+  "start_urls": ["https://AppOrGameDev.github.io/vite-press/"],
   "rateLimit": 8,
   "maxDepth": 10,
   "selectors": {
@@ -24,22 +21,11 @@
     }
   },
   "custom_settings": {
-    "attributesForFaceting": [
-      "lang"
-    ],
+    "attributesForFaceting": ["lang"],
     "synonyms": [
-      [
-        "js",
-        "javascript"
-      ],
-      [
-        "es6",
-        "ECMAScript6",
-        "ECMAScript2015"
-      ]
+      ["js", "javascript"],
+      ["es6", "ECMAScript6", "ECMAScript2015"]
     ]
   },
-  "selectors_exclude": [
-    "outline-link"
-  ]
+  "selectors_exclude": ["outline-link"]
 }

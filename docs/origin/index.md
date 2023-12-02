@@ -200,7 +200,7 @@ cd docs/.vitepress/dist
 git init
 git add -A
 git commit -m "Updated version of git repositoryMap"
-git remote add origin https://gitee.com/peiyanlu/vite-press.git
+git remote add origin https://gitee.com/AppOrGameDev/vite-press.git
 git push -f origin master:gh-pages
 
 # 返回上次所在的目录
@@ -308,7 +308,7 @@ jobs:
 
 > 在 [github.com/marketplace](https://github.com/marketplace) 可以找合适的第三方 `actions` 来辅助完成操作
 
-由于没有找到仅同步分支的 `action`，自己实现了[git-sync-action](https://github.com/peiyanlu/git-sync-action)
+由于没有找到仅同步分支的 `action`，自己实现了[git-sync-action](https://github.com/AppOrGameDev/git-sync-action)
 ，在 `deploy.yml` 中添加新的 `job`：
 
 ::: warning
@@ -321,12 +321,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sync branches to GitHube
-        uses: peiyanlu/git-sync-action@v1
+        uses: AppOrGameDev/git-sync-action@v1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         with:
-          source-repo: git@github.com:peiyanlu/vite-press.git
-          destination-repo: git@gitee.com:peiyanlu/vite-press.git
+          source-repo: git@github.com:AppOrGameDev/vite-press.git
+          destination-repo: git@gitee.com:AppOrGameDev/vite-press.git
           destination-branch: gh-pages
 ```
 
@@ -349,9 +349,9 @@ jobs:
       - name: Build Gitee Pages
         uses: yanglbme/gitee-pages-action@main
         with:
-          gitee-username: peiyanlu
+          gitee-username: AppOrGameDev
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
-          gitee-repo: peiyanlu/vite-press
+          gitee-repo: AppOrGameDev/vite-press
           branch: gh-pages
 ```
 
@@ -423,7 +423,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Push indices to Algolia
-        uses: peiyanlu/algolia-docsearch-action@master
+        uses: AppOrGameDev/algolia-docsearch-action@master
         with:
           algolia_application_id: ${{ secrets.ALGOLIA_APP_ID }}
           algolia_api_key: ${{ secrets.ALGOLIA_API_KEY }}
@@ -438,8 +438,8 @@ jobs:
 {
   "index_name": "vite-press",
   "start_urls": [
-    "https://peiyanlu.github.io/vite-press/",
-    "https://peiyanlu.gitee.io/vite-press/"
+    "https://AppOrGameDev.github.io/vite-press/",
+    "https://AppOrGameDev.gitee.io/vite-press/"
   ],
   "rateLimit": 8,
   "maxDepth": 10,
@@ -545,12 +545,12 @@ jobs:
       name: github-pages
     steps:
       - name: Sync branches to GitHube
-        uses: peiyanlu/git-sync-action@v1
+        uses: AppOrGameDev/git-sync-action@v1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         with:
-          source-repo: git@github.com:peiyanlu/vite-press.git
-          destination-repo: git@gitee.com:peiyanlu/vite-press.git
+          source-repo: git@github.com:AppOrGameDev/vite-press.git
+          destination-repo: git@gitee.com:AppOrGameDev/vite-press.git
           destination-branch: gh-pages
 
   gitee-pages-deploy:
@@ -560,9 +560,9 @@ jobs:
       - name: Build Gitee Pages
         uses: yanglbme/gitee-pages-action@main
         with:
-          gitee-username: peiyanlu
+          gitee-username: AppOrGameDev
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
-          gitee-repo: peiyanlu/vite-press
+          gitee-repo: AppOrGameDev/vite-press
           branch: gh-pages
 
   search-algolia:
@@ -573,7 +573,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Push indices to Algolia
-        uses: peiyanlu/algolia-docsearch-action@master
+        uses: AppOrGameDev/algolia-docsearch-action@master
         with:
           algolia_application_id: ${{ secrets.ALGOLIA_APP_ID }}
           algolia_api_key: ${{ secrets.ALGOLIA_API_KEY }}
