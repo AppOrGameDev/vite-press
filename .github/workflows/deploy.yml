@@ -34,5 +34,8 @@ jobs:
       - name: Update the gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: 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
+          github_token: ${{ secrets.VITE_PRESS_GITHUB_TOKEN }}
           publish_dir: docs/.vitepress/dist
+          user_name: ${{ secrets.MY_USER_NAME }}
+          user_email: ${{ secrets.MY_USER_EMAIL }}
+          commit_message: vite-press更新就自动部署
