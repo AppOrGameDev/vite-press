@@ -2,9 +2,10 @@
 
 ## 待办事项
 
-- [ ] 熟悉blog结构,并输出文档结构图
-- [ ] 迁移之前的笔记到这个新开发笔记中,实现MarkDown更好的展示
-- [ ] blog页面宽度调整
+- [x] 熟悉blog结构,并输出文档结构图
+- [x] 迁移之前的笔记到这个新开发笔记中,实现MarkDown更好的展示
+- [x] blog页面宽度调整
+- [x] 引入评论系统giscus
 
 ### 顶部导航栏
 
@@ -26,3 +27,8 @@
 
 
 
+# 引入评论系统giscus
+
+## 配置教程
+
+https://www.lixueduan.com/posts/blog/02-add-giscus-comment/
