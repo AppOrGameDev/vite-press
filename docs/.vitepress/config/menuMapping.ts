@@ -1,92 +1,117 @@
-import { SidebarMapping } from 'vitepress-plugin-helper'
-
+import { SidebarMapping } from "vitepress-plugin-helper";
 
 export const menuMapping: SidebarMapping = {
   browser: {
-    text: '浏览器',
+    text: "浏览器",
     order: 0,
-    collapsed: true,
+    collapsed: true
   },
   network: {
-    text: '网络',
+    text: "网络",
     order: 1,
-    collapsed: true,
+    collapsed: true
   },
   build: {
-    text: '编译构建',
+    text: "编译构建",
     order: 2,
-    collapsed: true,
+    collapsed: true
   },
   vue: {
-    text: 'Vue',
+    text: "Vue",
     order: 3,
-    collapsed: true,
+    collapsed: true
   },
   html: {
-    text: 'HTML',
+    text: "HTML",
     order: 4,
-    collapsed: true,
+    collapsed: true
   },
   css: {
-    text: 'CSS',
+    text: "CSS",
     order: 5,
-    collapsed: true,
+    collapsed: true
   },
   javascript: {
-    text: 'JavaScript',
+    text: "JavaScript",
     order: 6,
-    collapsed: true,
+    collapsed: true
   },
   npm: {
-    text: '依赖包',
+    text: "依赖包",
     order: 7,
-    collapsed: true,
+    collapsed: true
   },
   regex: {
-    text: '正则',
+    text: "正则",
     order: 8,
-    collapsed: true,
+    collapsed: true
   },
   code: {
-    text: '代码',
+    text: "代码",
     order: 99,
-    collapsed: true,
+    collapsed: true
   },
   // 后端
   koa: {
-    text: 'Koa',
+    text: "Koa",
     order: 0,
-    collapsed: true,
+    collapsed: true
   },
   mysql: {
-    text: 'MySQL',
+    text: "MySQL",
     order: 1,
-    collapsed: true,
+    collapsed: true
   },
   redis: {
-    text: 'Redis',
+    text: "Redis",
     order: 2,
-    collapsed: true,
+    collapsed: true
   },
   // CLI
   git: {
-    text: 'Git',
+    text: "Git",
     order: 0,
-    collapsed: true,
+    collapsed: true
   },
   linux: {
-    text: 'Linux',
+    text: "Linux",
     order: 1,
-    collapsed: true,
+    collapsed: true
   },
   windows: {
-    text: 'Windows',
+    text: "Windows",
     order: 2,
-    collapsed: true,
+    collapsed: true
   },
   node: {
-    text: 'Node',
+    text: "Node",
     order: 3,
-    collapsed: true,
+    collapsed: true
   },
-}
+  // 技巧
+  typora: {
+    text: "Typora",
+    order: 0,
+    collapsed: true
+  },
+  visio: {
+    text: "Visio",
+    order: 1,
+    collapsed: true
+  },
+  github_series: {
+    text: "GitHub Series",
+    order: 2,
+    collapsed: true
+  },
+  awesome_software: {
+    text: "优秀的软件",
+    order: 3,
+    collapsed: true
+  },
+  windows_series: {
+    text: "Windows Series",
+    order: 4,
+    collapsed: true
+  }
+};
