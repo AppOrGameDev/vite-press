@@ -60,7 +60,7 @@ export default withPwa(
       },
       footer: {
         message: "Released under the MIT License.",
-        copyright: `Copyright © 2022-${new Date().getFullYear()} YanLuPei`
+        copyright: `Copyright © 2022-${new Date().getFullYear()} XuXiao`
       },
       sidebarMenuLabel: "菜单",
       returnToTopLabel: "返回顶部",
