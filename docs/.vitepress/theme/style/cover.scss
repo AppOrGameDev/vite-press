@@ -4,7 +4,7 @@ body {
 }
 
 :root {
-  --vp-layout-max-width: 1640px;
+  --vp-layout-max-width: 100%;
 }
 
 .VPContent {
@@ -14,34 +14,33 @@ body {
         max-width: 100% !important;
       }
     }
-    
+
     &:not(.has-sidebar) {
       .container {
-        max-width: calc(var(--vp-layout-max-width) - 220px) !important;
-        
+        max-width: calc(var(--vp-layout-max-width) - 200px) !important;
+
         .aside {
-          max-width: 160px;
+          max-width: 140px;
           padding-left: 0;
         }
-        
+
         .content {
           max-width: 100% !important;
           padding-bottom: 32px;
-          
+
           .content-container {
             max-width: 100% !important;
           }
         }
       }
     }
-    
   }
 }
 
 .VPSidebar {
   .VPSidebarItem {
     position: relative;
-    
+
     @for $i from 1 through 3 {
       &:has(.level-#{$i}) {
         .items {
@@ -49,7 +48,7 @@ body {
         }
       }
     }
-    
+
     &::before {
       position: absolute;
       top: 50%;
@@ -62,21 +61,16 @@ body {
       border-radius: 2px;
       background: var(--vp-c-green-light);
     }
-    
+
     &.is-active {
-      background: linear-gradient(
-        to right,
-        transparent 0%,
-        var(--vp-c-green-dimm-2) 35%,
-        transparent 100%
-      );
-      
+      background: linear-gradient(to right, transparent 0%, var(--vp-c-green-dimm-2) 35%, transparent 100%);
+
       &::before {
         transform: scale(1) translateY(-50%);
       }
     }
   }
-  
+
   .nav {
     .group + .group {
       border-top: none;
@@ -89,7 +83,7 @@ body {
     width: 4px;
     border-radius: 4px;
   }
-  
+
   .outline-link.active {
     color: var(--vp-c-brand) !important;
   }
@@ -101,7 +95,7 @@ body {
     padding: 0.2rem 1rem;
     border-left: 4px solid var(--vp-c-green-dimm-3);
     background-color: var(--vp-c-green-dimm-1);
-    
+
     p {
       font-size: 14px;
     }
