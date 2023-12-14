@@ -241,3 +241,36 @@ https://www.cnblogs.com/sansui6/p/17267525.html
     }
 ```
 
+`.gitignore`
+```txt
+.settings
+
+# Java class files
+*.class
+*.jar
+
+# generated files
+bin
+gen
+out
+target
+
+# Eclipse project files
+.classpath
+.project
+.DS_Store
+
+# IntelliJ IDEA Files
+*.iml
+*.ipr
+*.iws
+*.idea
+.idea
+
+# logs
+logs
+nacos
+```
+
+
+
