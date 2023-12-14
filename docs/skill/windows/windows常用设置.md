@@ -67,3 +67,8 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8}]
 ```
 
+## chrome 关闭左上角"搜索标签页"
+1. chrome://flags/
+2. chrome-refresh-2023
+3. 搜索结果第一项设置为disable
+4. Relaunch
