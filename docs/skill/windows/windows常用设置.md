@@ -72,3 +72,38 @@ Windows Registry Editor Version 5.00
 2. chrome-refresh-2023
 3. 搜索结果第一项设置为disable
 4. Relaunch
+
+## 安装docker desktop
+
+`回家把自己的电脑安装上这个docker神器`
+
+参考链接
+
+https://zhuanlan.zhihu.com/p/663821762
+
+https://docs.docker.com/desktop/release-notes/
+
+下载 Docker Desktop 4.23.0.0版本
+
+docker 镜像源配置
+
+```json
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "experimental": false,
+  "features": {
+    "buildkit": true
+  },
+  "registry-mirrors": [
+    "https://xxxxxx.mirror.aliyuncs.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "http://hub-mirror.c.163.com",
+    "https://registry.docker-cn.com"
+  ]
+}
+```
