@@ -91,8 +91,8 @@ Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class 
 2023-12-23 15:01:50,475 INFO Initializing ExecutorService 'applicationTaskExecutor'
 ```
 
-- [ ] Nacos启动成功
-  - [ ] 访问地址http://127.0.0.1:8848/nacos/index.html   nacos  nacos
+- [x] Nacos启动成功
+  - [x] 访问地址http://127.0.0.1:8848/nacos/index.html   nacos  nacos
 
 ![](img/PixPin_2023-12-23_15-05-38.jpg)
 
@@ -106,7 +106,7 @@ Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class 
 
 - [x] 配置环境变量 %REDIS_HONE%   REDIS_HOME:F:\software\Redis\Redis-x64-5.0.14.1
 
-- [x] 配置常用启动/停止命名
+- [x] 配置常用启动/停止命名  `redis-server.exe redis.windows.conf`
 
 ```cmd
 # 启动redis客户端
@@ -250,7 +250,7 @@ java -Dserver.port=8480 -Dcsp.sentinel.dashboard.server=localhost:8480 -Dproject
   - [x] sentinel
 - [x] 修改微服务中properties,中间件的ip:port+username/password要配置正确
 - [x] 基础微服务启动
-  - [ ] gateway
+  - [x] gateway
   - [ ] authorization
   - [ ] admin
 - [x] 依赖第三方微服务
@@ -264,3 +264,117 @@ java -Dserver.port=8480 -Dcsp.sentinel.dashboard.server=localhost:8480 -Dproject
 激活序列号：
 6EA74C261C4BA344BC716FCD68295694BABFE016F5B7FA4890E4E29B0F52A5D965EE4A1AF633633D4573A2559630986F976D8F2920D688686CB60967F6FFB9FDADE6AC6DFD39416DE175D0DE01699C816244C16EE4E533A959E3ED0653143A7363E5B98E62126A78CDC5578636F456D29FD2B063FCBED837D50B10450C6FFBF0290DB782C8D4525864A96A98C37C0106FB5D8392A7E828F0BEFA86B4CD28BEBE83628A59BB23F60B7799A22C8D7B2039ED30F05492E9D2A2E2A03D7AC0199EA2CE529D561AE622B3C0DECC50D8A223BC5DA03E3AFF1150F0F217B0BE0400835369329DB74454870D5314DBA7C24B98CCE5600CBDAF264A21974FA3C85E7EAF0A
 ```
+
+| 服务名        | IP        | 端口号 |
+| ------------- | --------- | ------ |
+| gateway       | 127.0.0.1 | 8443   |
+| authorization | 127.0.0.1 | 9865   |
+| admin         | 127.0.0.1 | 9866   |
+
+
+
+### 3.1 gateway服务启动
+
+- [x] 删除`redis`的密码配置项;我本地redis没有设置密码
+
+![](img/Snipaste_2023-12-25_10-26-50.jpg)
+
+- [x] nacos上配置对应的配置项
+
+```yaml
+SERVER_PORT: 8443
+SENTINEL_DASHBOARD_HOST: 127.0.0.1
+SENTINEL_DASHBOARD_PORT: 8480
+REDIS_HOST: 127.0.0.1
+REDIS_PORT: 6379
+DATASOURCE_DBTYPE: mysql
+DATASOURCE_HOST: 127.0.0.1
+DATASOURCE_PORT: 3306
+DATASOURCE_USERNAME: root
+DATASOURCE_PASSWORD: root
+```
+
+
+
+![](img/Snipaste_2023-12-25_10-28-10.jpg)
+
+![](img/Snipaste_2023-12-25_10-28-41.jpg)
+
+- [x] gateway服务启动成功
+
+![](img/Snipaste_2023-12-25_10-29-42.jpg)
+
+### 3.2 authorization服务启动
+
+- [x] yaml删除redis密码；我本地redis没有密码
+- [x] nacos添加配置项；`authorization.yaml`
+
+```yaml
+SERVER_PORT: 9865
+SENTINEL_DASHBOARD_HOST: 127.0.0.1
+SENTINEL_DASHBOARD_PORT: 8480
+REDIS_HOST: 127.0.0.1
+REDIS_PORT: 6379
+DATASOURCE_DBTYPE: mysql
+DATASOURCE_HOST: 127.0.0.1
+DATASOURCE_PORT: 3306
+DATASOURCE_USERNAME: root
+DATASOURCE_PASSWORD: root
+```
+
+
+
+![](img/Snipaste_2023-12-25_10-47-13.jpg)
+
+![](img/Snipaste_2023-12-25_10-47-41.jpg)
+
+```txt
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-12-25 10:39:21 authorization ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to process import candidates for configuration class [com.alicp.jetcache.autoconfigure.JetCacheAutoConfiguration]; nested exception is java.lang.IllegalStateException: Error processing condition on com.alicp.jetcache.autoconfigure.RedisAutoConfiguration
+        at org.springframework.context.annotation.ConfigurationClassParser.processImports(ConfigurationClassParser.java:609)
+
+```
+
+- [ ] 尝试关闭jetcache，这个是可选项
+  - [ ] https://github.com/alibaba/jetcache/tree/master/docs/CN
+  - [ ] 通过上面的报错，可能是springboot的版本问题，估收集springboot，springcloud，springcloud alibaba版本信息如下
+
+```xml
+        <springboot.version>2.2.5.RELEASE</springboot.version>
+        <spring.cloud.version>Hoxton.SR3</spring.cloud.version>
+        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.versioni>
+
+
+
+        <!--jetcache缓存 -->
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-starter-redis</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+```
+
+
+
+
+
+### 3.3 admin服务启动
+
+- [x] 删除redis密码；我本地redis没有密码
+- [x] nacos配置`admin.yaml`
+
+```yaml
+SERVER_PORT: 9866
+SENTINEL_DASHBOARD_HOST: 127.0.0.1
+SENTINEL_DASHBOARD_PORT: 8480
+REDIS_HOST: 127.0.0.1
+REDIS_PORT: 6379
+DATASOURCE_DBTYPE: mysql
+DATASOURCE_HOST: 127.0.0.1
+DATASOURCE_PORT: 3306
+DATASOURCE_USERNAME: root
+DATASOURCE_PASSWORD: root
+```
+
