@@ -273,5 +273,21 @@ logs
 nacos
 ```
 
+# Git常用命令
+
+```shell
+git remote -v
+git remote add AppOrGameDev(别名) (git地址)
+
+cherrypick
+revert
+reset
+
+# 这两个命令配合+git仓库不限制禁止强制推送;可以将本地代码强制覆盖远程
+git reset --hard commitid
+git push -f
+
+```
+
 
 
