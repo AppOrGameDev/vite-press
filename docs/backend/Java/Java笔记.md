@@ -289,5 +289,19 @@ git push -f
 
 ```
 
+# 代码片段
+
+```java
+// 解决selectOne查出来多条的问题
+MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
+                new LambdaQueryWrapperX<MetaBusinessTypeDO>()
+                        .eqIfPresent(MetaBusinessTypeDO::getTenantId, tenantId)
+                        .eqIfPresent(MetaBusinessTypeDO::getAppCode, appCode)
+                        .eqIfPresent(MetaBusinessTypeDO::getDomainObjCode, domainObjCode)
+                        .eqIfPresent(MetaBusinessTypeDO::getObjCode, objCode)
+                        .eqIfPresent(MetaBusinessTypeDO::getCode, businessTypeCode)
+                        .last("limit 1"));
+```
+
 
 
