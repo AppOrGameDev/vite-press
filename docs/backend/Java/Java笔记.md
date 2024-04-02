@@ -303,5 +303,17 @@ MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
                         .last("limit 1"));
 ```
 
+# IDEA设置
+
+### services SpringBoot不显示端口
+
+- `idea-->file-->Invalidate Caches / Restart`
+
+- `弹出框全部勾选`
+
+### IDEA关闭经常弹出证书合法性提醒
+
+- `idea-->settings-->Tools-->Server Certificates-->勾选 Accept non-trusted certificates automatically`
+
 
 
