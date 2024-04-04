@@ -313,7 +313,11 @@ MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
 
 ### IDEA关闭经常弹出证书合法性提醒
 
-- `idea-->settings-->Tools-->Server Certificates-->勾选 Accept non-trusted certificates automatically`
+- `i549211577dea-->settings-->Tools-->Server Certificates-->勾选 Accept non-trusted certificates automatically`
+
+### IDEA 开启软换行
+
+- `idea-->settings-->Editor-->General-->Soft Wraps-->Soft-wrap these files`
 
 
 
