@@ -95,42 +95,56 @@ taskkill -pid 14868 -f
 ### 新增Stream类
 
 > ```java
->         List<Employee> employeeList = Arrays.asList(new Employee("张三", 18, 1800.0), new Employee("李四", 19, 1900.0), new Employee("王五", 20, 2000.0), new Employee("赵六", 21, 2100.0));
->         // 集合自带排序
->         employeeList.sort((a, b) -> b.getAge() - a.getAge());
->         System.out.println(employeeList);
->         // 集合自带遍历
->         employeeList.forEach(item -> System.out.println(item));
->         System.out.println(employeeList.stream().filter(item -> item.getAge() >= 20).count());
->         // 使用stream流来过滤生成新的集合
->         List<Employee> employeeList1 = employeeList.stream().filter(item -> item.getAge() >= 20).collect(Collectors.toList());
->         Set<Employee> employeeSet = employeeList.stream().filter(item -> item.getAge() >= 20).collect(Collectors.toSet());
->         // 对象List中提取属性构成新的List
->         List<String> names = employeeList.stream().map(Employee::getName).collect(Collectors.toList());
->         // 名称去重
->         List<String> names01 = employeeList.stream().map(Employee::getName).distinct().collect(Collectors.toList());
->         // 对每个元素做相同处理,返回新的集合(数量不变)
->         List<Employee> jiagongziList = employeeList.stream().map(item -> {
->             item.setSalary(item.getSalary() + 2000.0);
->             return item;
->         }).collect(Collectors.toList());
->         // 使用peek达成相同目标
->         List<Employee> jiagongziList01 = employeeList.stream().peek(item -> item.setSalary(item.getSalary() + 2000.0)).collect(Collectors.toList());
->         // 排序生成新的数组
->         List<Employee> employeeList2 = employeeList.stream().sorted((a, b) -> {
->             return a.getAge() - b.getAge();
->         }).collect(Collectors.toList());
->         System.out.println(employeeList2);
->         // 按年龄分组
->         Map<Integer, List<Employee>> groupByAge = employeeList.stream().collect(Collectors.groupingBy(Employee::getAge));
->         System.out.println(groupByAge);
->         // List转Map
->         Map<Integer, Employee> groupByAge = employeeList.stream().collect(Collectors.toMap(Employee::getId, Function.identity()));
->         Map<Integer, String> groupByAge = employeeList.stream().collect(Collectors.toMap(Employee::getId, Employee::getName));
->         // JSONArray转Map
->         JSONObject options = JSONObject.parseObject("{\"businessObjName\":\"\",\"refFieldCode\":\"\",\"maxNum\":0,\"minNum\":0,\"filter\":[{\"fieldType\":\"\"}],\"options\":[{\"label\":\"选项1\",\"value\":\"1\"},{\"label\":\"选项2\",\"value\":\"2\"}],\"linkUrl\":\"\",\"bindDict\":\"mes_origin_type\",\"maxFileNumber\":1,\"isDisplay\":1}");
->         Map<String, String> dictOptionMap = options.getJSONArray("options").stream().collect(Collectors.toMap(key -> ((JSONObject) key).getString("value"), val -> ((JSONObject) val).getString("label")));
->         System.out.println(dictOptionMap);
+>      List<Employee> employeeList = Arrays.asList(new Employee("张三", 18, 1800.0), new Employee("李四", 19, 1900.0), new Employee("王五", 20, 2000.0), new Employee("赵六", 21, 2100.0));
+>      // 集合自带排序
+>      employeeList.sort((a, b) -> b.getAge() - a.getAge());
+>      System.out.println(employeeList);
+>      // 集合自带遍历
+>      employeeList.forEach(item -> System.out.println(item));
+>      System.out.println(employeeList.stream().filter(item -> item.getAge() >= 20).count());
+>      // 使用stream流来过滤生成新的集合
+>      List<Employee> employeeList1 = employeeList.stream().filter(item -> item.getAge() >= 20).collect(Collectors.toList());
+>      Set<Employee> employeeSet = employeeList.stream().filter(item -> item.getAge() >= 20).collect(Collectors.toSet());
+>      // 对象List中提取属性构成新的List
+>      List<String> names = employeeList.stream().map(Employee::getName).collect(Collectors.toList());
+>      // 名称去重
+>      List<String> names01 = employeeList.stream().map(Employee::getName).distinct().collect(Collectors.toList());
+>      // 对每个元素做相同处理,返回新的集合(数量不变)
+>      List<Employee> jiagongziList = employeeList.stream().map(item -> {
+>          item.setSalary(item.getSalary() + 2000.0);
+>          return item;
+>      }).collect(Collectors.toList());
+>      // 使用peek达成相同目标
+>      List<Employee> jiagongziList01 = employeeList.stream().peek(item -> item.setSalary(item.getSalary() + 2000.0)).collect(Collectors.toList());
+>      // 排序生成新的数组
+>      List<Employee> employeeList2 = employeeList.stream().sorted((a, b) -> {
+>          return a.getAge() - b.getAge();
+>      }).collect(Collectors.toList());
+>      System.out.println(employeeList2);
+>      // 按年龄分组
+>      Map<Integer, List<Employee>> groupByAge = employeeList.stream().collect(Collectors.groupingBy(Employee::getAge));
+>      System.out.println(groupByAge);
+>      // List转Map
+>      Map<Integer, Employee> groupByAge = employeeList.stream().collect(Collectors.toMap(Employee::getId, Function.identity()));
+>      Map<Integer, String> groupByAge = employeeList.stream().collect(Collectors.toMap(Employee::getId, Employee::getName));
+>      // JSONArray转Map
+>      JSONObject options = JSONObject.parseObject("{\"businessObjName\":\"\",\"refFieldCode\":\"\",\"maxNum\":0,\"minNum\":0,\"filter\":[{\"fieldType\":\"\"}],\"options\":[{\"label\":\"选项1\",\"value\":\"1\"},{\"label\":\"选项2\",\"value\":\"2\"}],\"linkUrl\":\"\",\"bindDict\":\"mes_origin_type\",\"maxFileNumber\":1,\"isDisplay\":1}");
+>      Map<String, String> dictOptionMap = options.getJSONArray("options").stream().collect(Collectors.toMap(key -> ((JSONObject) key).getString("value"), val -> ((JSONObject) val).getString("label")));
+>      System.out.println(dictOptionMap);
+> 
+>     Map:
+> 
+>     Map<String,String> map=cargolist.stream().collect(Collectors.toMap(CodeCargo::getCargoCode,CodeCargo::getCargoName));
+> 
+>     Map<String, CodeCargo> map=cargolist.stream().collect(Collectors.toMap(CodeCargo::getCargoCode, Function.identity(), (oldValue, newValue) -> oldValue);
+> 
+>     Map<String, List<CodeCargo>> map = cargolist.stream().collect(Collectors.groupingBy(CodeCargo::getCargoCode));
+> 
+>     LinkedHashMap：
+> 
+>     Map<String, CodeCargo> map= cargolist.stream().collect(Collectors.toMap(CodeCargo::getCargoCode, Function.identity(), (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+> 
+>     Map<String,List<CodeCargo>> map= cargolist.stream().collect(Collectors.groupingBy(CodeCargo::getCargoCode, LinkedHashMap::new,Collectors.toList()));
 > ```
 >
 > 
