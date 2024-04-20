@@ -150,6 +150,8 @@ taskkill -pid 14868 -f
 > 
 > // lambda实现分页操作
 > list.stream().skip((pageNo-1)*pageSize).limit(pageSize).collect(Collectors.toList());
+> // 累加
+> BigDecimal sum = list.stream().map(Person::getAge).reduce(BigDecimal.ZERO, BigDecimal::add);
 > 
 > ```
 >
