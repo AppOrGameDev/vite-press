@@ -121,3 +121,56 @@ http {
     }
 ```
 
+`失败案例:一个网站转到另一个网站,解决不了页面里面静态资源的相对定位问题`
+
+```config
+	
+	# Load balancing example
+	upstream load_balancing_server {
+	    server 100.74.106.82:5173;
+	}
+	
+	upstream singcheer_dev {
+	    server develop.eto.permde.com;
+	}
+
+
+    server {
+        listen       8888;
+        server_name  localhost;
+		
+		# 通过正则来控制所需要分离的静态资源
+		location /js/ {
+			# 静态资源存放目录
+			proxy_pass   http://singcheer_dev/js/;
+		}
+		
+		location /css/ {
+			# 静态资源存放目录
+			proxy_pass   http://singcheer_dev/css/;
+		}
+		
+		location /static/ {
+			# 静态资源存放目录
+			proxy_pass   http://singcheer_dev/static/;
+		}
+		
+		location /api/ {
+			proxy_pass   http://singcheer_dev/;
+		}
+		
+        location / {
+            proxy_pass   http://singcheer_dev/;
+        }
+    }
+
+    server {
+        listen       8899;
+        server_name  localhost;
+		
+        location / {
+            proxy_pass   http://load_balancing_server/;
+        }
+
+    }
+```
