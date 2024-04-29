@@ -131,7 +131,9 @@ docker 镜像源配置
 ##### windows开启启动时自动执行bat脚本
 
 - win+r
-- `shell:startup`
+- `shell:startup` 这个是用户的自动启动
+  - `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\`这个是系统的自动启动
+
 - 将编写好的bat脚本放到上面步骤的文件夹中
 - 关机/重启-->验证效果
   - 我目前配置的是开启自动启动vite-press;配合上面的异地组网,就可以远程访问家里电脑部署的vite-press,速度比github.io的速度快上一些.
