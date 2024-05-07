@@ -83,6 +83,22 @@ http {
 > `/login` 是你vue项目的入口路由 ，一定要有
 > 后面就进入到你的项目了，使用的接口也是代理过的
 
+```txt
+
+    server {
+        listen       8890;
+        server_name  localhost;
+
+        location /words/ {
+            alias  F:/personal/code/words/;
+            try_files $uri $uri/ /index.html last;
+            index index.html index.htm;
+        }
+    }
+```
+
+
+
 ##### 负载均衡
 
 `本地nginx负载均衡远端服务`
