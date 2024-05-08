@@ -130,6 +130,21 @@ vi ~/.config/fish/config.fish
 cat ~/.zshrc
 ```
 
+### Tabby的FTP只能上传单个文件,因此需要配合解压命令
+
+```shell
+# 安装unzip
+apt install unzip
+# 解压到当前文件夹
+unzip 压缩文件名
+# 解压到指定文件夹
+unzip 压缩文件名 -d 指定目录
+```
+
+
+
+
+
 ## 验证PC访问安卓手机上的Nginx反向代理的静态资源(自测验证,可不要)
 
 - 通过FTP上传index.html到反向代理的指定目录
