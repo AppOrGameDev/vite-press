@@ -3,6 +3,7 @@
 - Termux官网
   - https://termux.dev/en/
   - https://github.com/termux/termux-app
+    - [termux-app_v0.118.0+github-debug_arm64-v8a.apk](https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk)
 
 ## Termux安装Nginx
 
@@ -133,7 +134,6 @@ cat ~/.zshrc
 
 - 通过FTP上传index.html到反向代理的指定目录
 - PC浏览器访问Nginx反向代理的URL地址，能访问到上面的index.html
-
 
 
 
