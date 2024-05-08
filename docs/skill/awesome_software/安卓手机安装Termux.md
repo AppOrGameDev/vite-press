@@ -15,6 +15,8 @@ nginx
 # CANNOT LINK EXECUTABLE "nginx": library "libssl.so.3" not found: needed by main executable;这个报错是需要升级Termux
 apt-get update
 apt-get upgrade
+# termux自动启动nginx
+echo "nginx" >> ~/.bashrc 
 ```
 
 `启动完成后,手机浏览器输入http://127.0.0.1:8080;默认打开Nginx页面,就代表Nginx成功`
@@ -64,6 +66,9 @@ echo "sshd" >> ~/.bashrc
 - https://tabby.sh/
 - https://github.com/Eugeny/tabby
 - 使用免安装(解压版本)`tabby-1.0.207-portable-x64.zip`
+- 个性化设置
+  - 设置-->外观-->字体-->`JetBrains Mono ExtraBold`
+  - 设置-->终端-->鼠标-->`右键菜单`
 
 ## 使用Tabby连接局域网手机上的Termux
 
@@ -80,6 +85,54 @@ echo "sshd" >> ~/.bashrc
 - 备份配置文件`cp nginx.conf nginx.conf.default`
 - 安装vim `apt install vim`
 - `vi nginx.conf`
+
+## Tabby使用FTP报permission defined
+
+- 给反向代理的文件夹设置权限
+
+```shell
+# 给指定目录及其子目录赋权限
+chmod -R 777 文件/目录
+# 给指定目录及其子目录设置所属用户和用户组
+chown -R user[:group] 文件/目录
+```
+
+- Tabby打开当前路径的FTP面板
+
+```shell
+# 进入~目录
+cd ~
+
+# ~/.bash_profile文件不存在则创建,存在则在最后追加
+vi ~/.bash_profile
+# 追加内容
+# export PS1="$PS1\[\e]1337;CurrentDir="'$(pwd)\a\]'
+# 检查内容追加是否正确
+cat ~/.bash_profile
+
+# ~/.zshrc文件不存在则创建,存在则在最后追加
+vi ~/.zshrc
+# 追加内容
+# precmd () { echo -n "\x1b]1337;CurrentDir=$(pwd)\x07" }
+# 检查内容追加是否正确
+cat ~/.zshrc
+
+
+# ~/.config/fish/config.fish文件不存在则创建,存在则在最后追加
+# 这里涉及需要创建目录mkdir .config/fish
+vi ~/.config/fish/config.fish
+# 追加内容
+# function __tabby_working_directory_reporting --on-event fish_prompt
+#    echo -en "\e]1337;CurrentDir=$PWD\x7"
+# end
+# 检查内容追加是否正确
+cat ~/.zshrc
+```
+
+## 验证PC访问安卓手机上的Nginx反向代理的静态资源(自测验证,可不要)
+
+- 通过FTP上传index.html到反向代理的指定目录
+- PC浏览器访问Nginx反向代理的URL地址，能访问到上面的index.html
 
 
 
