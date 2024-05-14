@@ -322,7 +322,8 @@ MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
                         .eqIfPresent(MetaBusinessTypeDO::getDomainObjCode, domainObjCode)
                         .eqIfPresent(MetaBusinessTypeDO::getObjCode, objCode)
                         .eqIfPresent(MetaBusinessTypeDO::getCode, businessTypeCode)
-                        .last("limit 1"));
+                        .last("order by update_time desc limit 1"));
+
 ```
 
 # IDEA设置
