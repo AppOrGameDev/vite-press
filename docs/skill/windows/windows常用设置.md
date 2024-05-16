@@ -164,4 +164,21 @@ docker 镜像源配置
 - 按住ctrl+左键+超链接 `(新标签页)打开该链接`
 - 按住alt+鼠标左键+滑动选中 `改变鼠标光标样式，选中超链接上的文字`
 - 鼠标中键+超链接 `(新标签页)打开该链接`
-- 
+
+
+
+### win10 右下角时间显示秒
+
+- `win` + `R`;`regedit`
+- `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced`
+- 右侧新建一个DWORD(32位)值，并命名为`ShowSecondsInSystemClock`，双击打开将数值数据修改为`1`，确定保存
+- `重启资源管理器`
+
+
+
+### win11右下角显示年月日  时分秒
+
+- 个性化-->任务栏-->任务栏行为-->在系统托盘时钟中显示秒数`勾选`
+
+
+
