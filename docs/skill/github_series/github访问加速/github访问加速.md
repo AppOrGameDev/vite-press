@@ -80,3 +80,7 @@ https://gitee.com/chcrazy/FastGithub/releases
 
 ![](img/Snipaste_2023-11-29_10-47-36.jpg)
 
+
+### 8. dev-sidecar-配置有点复杂,不像FastGitHub开箱即用
+
+[dev-sidecar](https://github.com/docmirror/dev-sidecar/releases)
