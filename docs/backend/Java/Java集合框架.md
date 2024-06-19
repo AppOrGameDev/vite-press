@@ -13,8 +13,8 @@
 - Collection
   - List
     - ArrayList
-    - Vector `类似ArrayList` `线程(相对)安全;加入async` `允许添加null元素`
-      - Stack <strong style="color:red;">栈;后进先出（LIFO，Last In First Out）</strong>
+    - Vector `类似ArrayList` `线程(相对)安全;加入synchronized` `允许添加null元素`  <strong style="color:red;">不推荐使用</strong>
+      - Stack <strong style="color:red;">栈;后进先出（LIFO，Last In First Out）；不推荐使用</strong> `线程安全;synchronized`
         - `boolean empty()` <strong style="color:green;">测试栈是否为空</strong>
         - `Object peek()` <strong style="color:green;">查看栈顶部的对象，但不从栈中移除它</strong>
         - `Object pop()` <strong style="color:green;">移除栈顶部的对象，并作为此函数的值返回该对象</strong>
@@ -44,8 +44,8 @@
       
     - CopyOnWriteArraySet <strong style="color:red;">线程安全;</strong>
     
-  - Queue
-    - ArrayDeque
+  - Queue <strong style="color:red;">单端队列，只能从一端插入元素，另一端删除元素，实现上一般遵循 先进先出（FIFO） 规则</strong>
+    - ArrayDeque <strong style="color:red;">双端队列，在队列的两端均可以插入或删除元素；不能存null</strong>
     - PriorityQueue
   
 - Map
