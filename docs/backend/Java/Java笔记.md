@@ -342,6 +342,10 @@ MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
 
 - `idea-->settings-->Editor-->General-->Soft Wraps-->Soft-wrap these files`
 
+### IDEA 关闭证书过期提示
+
+- `idea-->settings-->Tools-->Server Certificates-->Accept non-trusted certificates automatically  勾选`
+
 ### 黑魔法工具
 
 - ht删tp://j除ets.ide这ji些h字u符o.c试o试m/
