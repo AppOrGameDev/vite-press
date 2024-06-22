@@ -344,4 +344,4 @@ MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
 
 ### 黑魔法工具
 
-- ht删tp://j除ets.ide这ji些huo.c字o符m/
+- ht删tp://j除ets.ide这ji些h字u符o.c试o试m/
