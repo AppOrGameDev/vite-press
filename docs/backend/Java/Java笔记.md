@@ -352,8 +352,8 @@ MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
 
 ### 高效快捷键
 
-- ctrl+8
-- ctrl+9
+- alt+8
+- alt+9
 - shift+F9
 - shift+F10
 - shift+Esc
