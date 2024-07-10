@@ -349,3 +349,13 @@ MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
 ### 黑魔法工具
 
 - ht删tp://j除ets.ide这ji些h字u符o.c试o试m/
+
+### 高效快捷键
+
+- ctrl+8
+- ctrl+9
+- shift+F9
+- shift+F10
+- shift+Esc
+- ctrl+Number -
+
