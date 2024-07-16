@@ -313,6 +313,8 @@ git push -f
 
 # 代码片段
 
+`解决selectOne查出来多条的问题`
+
 ```java
 // 解决selectOne查出来多条的问题
 MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
@@ -325,6 +327,14 @@ MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
                         .last("order by update_time desc limit 1"));
 
 ```
+
+`将json字符串转换成目标对象`
+
+```java
+PageResult<Map<String, Object>> page = JSON.parseObject(JSON.toJSONString(resp.getData()), new TypeReference<PageResult<Map<String, Object>>>() {}.getType());
+```
+
+
 
 # IDEA设置
 

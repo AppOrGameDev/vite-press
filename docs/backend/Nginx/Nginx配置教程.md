@@ -97,6 +97,21 @@ http {
     }
 ```
 
+##### 反向代理本地静态资源
+
+```config
+	server {
+        listen       8902;
+        server_name  localhost;
+
+        location /img/ {
+            alias  F:/Temp/;
+            try_files $uri $uri/ /index.html last;
+            index index.html index.htm;
+        }
+    }
+```
+
 
 
 ##### 负载均衡
