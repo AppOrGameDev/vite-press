@@ -118,7 +118,7 @@ docker 镜像源配置
 
 ##### 控制电脑
 
-`win+R`-->`mstsc  远程桌面链接 cmd命令`
+`win+R`--><strong style="color:red;">mstsc</strong>`远程桌面链接 cmd命令`
 
 `win+s`->`搜索 远程桌面连接`
 
