@@ -34,7 +34,7 @@
       - 在前端项目根目录下执行`nvmd use [node_version或别名] --project`
       - <strong style="color:red;">只能针对node和npm命令生效;对pnpm和yarn不生效.</strong>
     
-  - <strong style="color:green;">fnm:极快性能以及简洁命令行体验</strong>
+  - ~~<strong style="color:red;">fnm:极快性能以及简洁命令行体验</strong>~~
     
     - [win安装fnm](https://www.oldestdream.com/2022/04/windows-install-nodejs-with-fnm/)
     
