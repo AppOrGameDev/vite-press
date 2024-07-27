@@ -25,7 +25,7 @@
     
     - [解决Nginx代理dist后样式丢失的问题](https://blog.csdn.net/August_802/article/details/129295056)
     
-      - 修改`/docs/.vuepress/config.js`中`base: './'`
+      - 修改`/docs/.vuepress/config.js`中`base: '/'`
     
       - Nginx中配置如下
     
