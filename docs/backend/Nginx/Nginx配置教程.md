@@ -205,3 +205,7 @@ http {
 
     }
 ```
+
+### Nginx Proxy Manager
+
+> [轻松管理反向代理：Nginx Proxy Manager 详解](https://jwinks.com/p/nginx-proxy-manager/)
