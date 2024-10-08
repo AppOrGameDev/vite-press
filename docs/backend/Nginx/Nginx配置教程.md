@@ -209,3 +209,9 @@ http {
 ### Nginx Proxy Manager
 
 > [轻松管理反向代理：Nginx Proxy Manager 详解](https://jwinks.com/p/nginx-proxy-manager/)
+
+### 全新的Nginx在线管理平台 nginx-ui
+
+> [nginx-ui 官网](https://nginxui.com/zh_CN/)
+>
+> [nginx-ui GitHub](https://github.com/0xJacky/nginx-ui)
