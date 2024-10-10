@@ -356,6 +356,11 @@ PageResult<Map<String, Object>> page = JSON.parseObject(JSON.toJSONString(resp.g
 
 - `idea-->settings-->Tools-->Server Certificates-->Accept non-trusted certificates automatically  勾选`
 
+### IDEA 设置主题
+
+- `idea-->settings-->Appearance & Behavior-->Appearance-->Theme-->One Dark Vivid`
+- `idea-->settings-->Editor-->Color Scheme-->One Dark Vivid`
+
 ### 黑魔法工具
 
 - ht删tp://j除ets.ide这ji些h字u符o.c试o试m/
