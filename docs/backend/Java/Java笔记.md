@@ -66,7 +66,7 @@ mvn clean deploy -Dmaven.javadoc.skip=true -Dmaven.test.skip=true  --settings /F
 git clone http://ip:port/xux/fastboot.git -b dev
 git remote rename origin xux
 # git remote add xux http://ip:port/xux/fastboot.git
-#git remote rm origin
+# git remote rm origin
 git remote add singcheer http://ip:port/unified-platform/fastboot.git
 git remote -v
 ```
@@ -329,13 +329,134 @@ MetaBusinessTypeDO metaBusinessTypeDO = metaBusinessTypeMapper.selectOne(
 
 ```
 
+`解决根据指定条件更新指定字段的update语句`
+
+```java
+LambdaUpdateWrapper<XXXDO> lambdaUpdateWrapper = new LambdaUpdateWrapper<XXXDO>()
+    .eq(XXXDO::getId, xxxDO.getId())
+    .eq(XXXDO::getName, xxxDO.getName())
+    .set(XXXDO::getErrorMsg, xxxDO.getMessage())
+    .set(XXXDO::getDescription, xxxDO.getDescription());
+XXXMapper.update(null, lambdaUpdateWrapper);
+
+```
+
+`解决一次性批量插入多条记录`
+
+```sql
+insert into dbo.表名(列名1,列名2,列名3) values
+(数据1，数据2，数据3),
+(数据4，数据5，数据6)
+```
+
+> 复用Mybatis-Plus的基础能力
+>
+> - XXXMapper.xml
+> - XXXDO.java(@TableName指定表明;驼峰指定列名)
+> - XXXMapper.java(都指向上面这个DO.java)
+>
+> ```java
+> @Mapper
+> public interface XXXMapper extends BaseMapperX<XXXDO>
+> ```
+>
+> - BatchXXXMapper.java(都指向上面这个DO.java)
+>
+> ```java
+> @Mapper
+> public interface BatchXXXMapper extends RootMapper<XXXDO>
+> ```
+
 `将json字符串转换成目标对象`
 
 ```java
 PageResult<Map<String, Object>> page = JSON.parseObject(JSON.toJSONString(resp.getData()), new TypeReference<PageResult<Map<String, Object>>>() {}.getType());
 ```
 
+`将Excel直接导入表中`
 
+- 定义Excel中sheet页的表头(第一行)名称和JavaBean对象属性字段的映射关系`(注意单元格的格式;日期时间--localDateTime;金额--BigDecimal)`
+
+> ```java
+> @Data
+> @AllArgsConstructor
+> @NoArgsConstructor
+> @EqualsAndHashCode
+> public class DemoData {
+>     @ExcelProperty("名称")
+>     private String name;
+>     @ExcelProperty("ID")
+>     private String id;
+>     @ExcelProperty("创建时间")
+>     private LocalDateTime createTime;
+>     @ExcelProperty("金额(RMB)")
+>     private BigDecimal money;
+> }
+> ```
+
+- 监听Excel的sheet页读取监听
+
+> ```java
+> // 有个很重要的点 DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
+> @Slf4j
+> public class DemoDataListener implements ReadListener<DemoData> {
+> 
+>     /**
+>      * 每隔5条存储数据库，实际使用中可以100条，然后清理list ，方便内存回收
+>      */
+>     private static final int BATCH_COUNT = 100;
+>     /**
+>      * 缓存的数据
+>      */
+>     private List<DemoData> cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
+>     /**
+>      * 这个每一条数据解析都会来调用
+>      *
+>      * @param data    one row value. Is is same as {@link AnalysisContext#readRowHolder()}
+>      * @param context
+>      */
+>     @Override
+>     public void invoke(DemoData data, AnalysisContext context) {
+>         log.info("解析到一条数据:{}", JSON.toJSONString(data));
+>         cachedDataList.add(data);
+>         // 达到BATCH_COUNT了，需要去存储一次数据库，防止数据几万条数据在内存，容易OOM
+>         if (cachedDataList.size() >= BATCH_COUNT) {
+>             saveData();
+>             // 存储完成清理 list
+>             cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
+>         }
+>     }
+> 
+>     /**
+>      * 所有数据解析完成了 都会来调用
+>      *
+>      * @param context
+>      */
+>     @Override
+>     public void doAfterAllAnalysed(AnalysisContext context) {
+>         // 这里也要保存数据，确保最后遗留的数据也存储到数据库
+>         saveData();
+>         log.info("所有数据解析完成！");
+>     }
+> 
+>     /**
+>      * 加上存储数据库
+>      */
+>     private void saveData() {
+>         log.info("{}条数据，开始存储数据库！", cachedDataList.size());
+>         demoDAO.save(cachedDataList);
+>         log.info("存储数据库成功！");
+>     }
+> }
+> ```
+
+- 读取Excel
+
+> ```java
+> EasyExcel.read(file.getInputStream(), DemoData.class, new DemoDataListener()).sheet("测试sheet页名称").doRead();
+> ```
+>
+> 
 
 # IDEA设置
 
